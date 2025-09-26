@@ -1,1 +1,254 @@
 
+        /* ========== RESET แบบกะทัดรัด ========== */
+        :root {
+            --bg-dark: #0f1724;
+            --accent: #0ea5a4;
+            --muted: #93a3b3;
+            --max-width: 1100px;
+            --font-sans: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-sans);
+            color: #0b1220;
+            background: #fff;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.5;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        /* ========== LAYOUT ========== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid rgba(11, 18, 32, 0.05);
+        }
+
+        .nav {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.75rem 1rem;
+        }
+
+        .brand {
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--bg-dark)
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            align-items: center
+        }
+
+        nav li {
+            font-weight: 600;
+            color: var(--bg-dark)
+        }
+
+        /* mobile menu */
+        .menu-btn {
+            display: none;
+            background: none;
+            border: 0;
+            font-size: 1.15rem
+        }
+
+        @media (max-width:800px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                right: 1rem;
+                top: 60px;
+                background: #fff;
+                padding: 0.5rem 1rem;
+                box-shadow: 0 6px 20px rgba(11, 18, 32, 0.08);
+                border-radius: 8px;
+                flex-direction: column
+            }
+
+            .menu-btn {
+                display: block
+            }
+
+            nav ul.show {
+                display: flex
+            }
+        }
+
+        /* ========== PARALLAX SECTIONS ========== */
+        /* Structure: each .parallax has a background image and a .content overlay */
+        .parallax {
+            min-height: 70vh;
+            display: grid;
+            place-items: center;
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* IMPORTANT: เปลี่ยน url() ให้เป็นไฟล์รูปของคุณเอง (local) */
+        .p-1 {
+            background-image: url('images/parallax1.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .p-2 {
+            background-image: url('images/parallax2.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .p-3 {
+            background-image: url('images/parallax3.jpg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* overlay (กรองสี) */
+        .parallax::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(4, 6, 12, 0.45), rgba(4, 6, 12, 0.35));
+            z-index: 0;
+        }
+
+        .parallax .content {
+            position: relative;
+            z-index: 1;
+            padding: 4rem 1rem;
+            max-width: 900px;
+        }
+
+        .parallax h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            margin: 0 0 0.6rem;
+            font-weight: 800;
+            letter-spacing: -1px
+        }
+
+        .parallax p {
+            font-size: clamp(1rem, 2.2vw, 1.15rem);
+            margin: 0 0 1.2rem;
+            color: rgba(255, 255, 255, 0.92)
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.7rem 1.15rem;
+            border-radius: 8px;
+            font-weight: 700;
+            box-shadow: 0 8px 30px rgba(14, 165, 164, 0.18);
+        }
+
+        /* ========== CONTENT SECTIONS (non-parallax) ========== */
+        .section {
+            padding: 5rem 1rem;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .card {
+            background: linear-gradient(180deg, #fff, #fbfdff);
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: 0 8px 30px rgba(11, 18, 32, 0.04);
+            border: 1px solid rgba(11, 18, 32, 0.03);
+        }
+
+        .card h3 {
+            margin: 0 0 0.5rem
+        }
+
+        .muted {
+            color: var(--muted);
+            font-weight: 500
+        }
+
+        /* responsive grid */
+        @media (max-width:1000px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        @media (max-width:700px) {
+            .cards {
+                grid-template-columns: 1fr
+            }
+
+            .parallax {
+                min-height: 56vh
+            }
+
+            .section {
+                padding: 3rem 1rem
+            }
+
+            header {
+                position: static
+            }
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: #0b1220;
+            color: #dfeeff;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        /* ========== Accessibility helpers ========== */
+        .visually-hidden {
+            position: absolute !important;
+            height: 1px;
+            width: 1px;
+            overflow: hidden;
+            clip: rect(1px, 1px, 1px, 1px);
+            white-space: nowrap
+        }
